@@ -1,5 +1,6 @@
 const { App } = require("@slack/bolt");
 const { registerListeners } = require("./listeners");
+const { sendMessageToChannel } = require("./scheduler/e2e_scheduler");
 
 
 const { FileInstallationStore } = require('@slack/oauth');
@@ -30,26 +31,7 @@ registerListeners(app);
     console.log('⚡️ Bolt app is running!');
 })();
 
-// app.message('hello', async ({ message, say }) => {
-//     // say() sends a message to the channel where the event was triggered
-//     await say({
-//         text: `Hey there <@${message.user}>!`,
-//         blocks: [
-//             {
-//                 "type": "section",
-//                 "text": {
-//                     "type": "mrkdwn",
-//                     "text": `Hey there <@${message.user}>!`
-//                 },
-//                 "accessory": {
-//                     "type": "button",
-//                     "text": {
-//                         "type": "plain_text",
-//                         "text": "Click Me"
-//                     },
-//                     "action_id": "button_click"
-//                 }
-//             }
-//         ],
-//     })
-// })
+
+(async () => {
+    sendMessageToChannel(app.client);
+})();
