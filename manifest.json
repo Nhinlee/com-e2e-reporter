@@ -1,0 +1,45 @@
+{
+    "display_information": {
+        "name": "Com-E2E",
+        "description": "Communication E2E reporter",
+        "background_color": "#e1e81a",
+        "long_description": "The main function is support schedule person to check E2E daily. Target of this app is want to be make E2E stable for our features. this is the slack application develop by @Nhinlee. pls contact him to get instruction to this bot."
+    },
+    "features": {
+        "bot_user": {
+            "display_name": "Com-E2E",
+            "always_online": true
+        },
+        "slash_commands": [
+            {
+                "command": "/com-e2e",
+                "url": "https://31c8-115-78-238-177.ap.ngrok.io/slack/events",
+                "description": "test",
+                "usage_hint": "test",
+                "should_escape": false
+            }
+        ]
+    },
+    "oauth_config": {
+        "redirect_urls": [
+            "https://31c8-115-78-238-177.ap.ngrok.io/slack/oauth_redirect"
+        ],
+        "scopes": {
+            "bot": [
+                "channels:read",
+                "chat:write",
+                "chat:write.public",
+                "commands"
+            ]
+        }
+    },
+    "settings": {
+        "interactivity": {
+            "is_enabled": true,
+            "request_url": "https://42a7-115-78-238-177.ap.ngrok.io/slack/message_action"
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": false,
+        "token_rotation_enabled": false
+    }
+}
