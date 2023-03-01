@@ -1,7 +1,7 @@
 const { App } = require("@slack/bolt");
 const CronJob = require('cron').CronJob;
 const { registerListeners } = require("./listeners");
-const { sendMessageToChannel } = require("./scheduler/e2e_scheduler");
+const { sendMessageToChannel, getDataFromSheetAndSendMessage } = require("./scheduler/e2e_scheduler");
 
 
 
@@ -35,8 +35,10 @@ registerListeners(app);
 
 
 (async () => {
+    await getDataFromSheetAndSendMessage(app.client);
+
     const job = new CronJob(
-        '25 16 * * *',
+        '00 9 * * *',
         async function()  {
             await sendMessageToChannel(app.client);
         },

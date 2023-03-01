@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Nhinlee/com-e2e-reporter#readme",
   "dependencies": {
     "@slack/bolt": "^3.12.2",
-    "cron": "^2.2.0"
+    "cron": "^2.2.0",
+    "excel-date-to-js": "^1.1.5"
   }
 }
