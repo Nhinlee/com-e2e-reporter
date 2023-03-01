@@ -46,8 +46,72 @@ async function sendMessageToChannel(client, email) {
         // Call the chat.postMessage method using the WebClient
         const result = await client.chat.postMessage({
             channel: channelID,
-            text: `Hello <@${tag}>, this is the test schedule message, this is the link to check schdule report https://docs.google.com/spreadsheets/d/17NNQNDKGmLbtI_abxVk_fJXFR5Km2JW1Ov4ovzDqz88/edit#gid=0`,
             token: process.env.SLACK_BOT_TOKEN,
+            blocks: [
+                {
+                    "type": "header",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "E2E communication daily",
+                        "emoji": true
+                    }
+                },
+                {
+                    "type": "divider"
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "plain_text",
+                        "text": `Hi <@${tag}>, to make our E2E test stable :success: , pls help to check our E2E report :palms_up_together:`,
+                        "emoji": true
+                    }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Click here to get the report link"
+                    },
+                    "accessory": {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "E2E report",
+                            "emoji": true
+                        },
+                        "value": "click_me_123",
+                        "url": "https://mana-e2e.web.app/?squads=%40communication",
+                        "action_id": "button-action"
+                    }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "Here is the schedule spreadsheet"
+                    },
+                    "accessory": {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "spreadsheet",
+                            "emoji": true
+                        },
+                        "value": "click_me_123",
+                        "url": "https://docs.google.com/spreadsheets/d/17NNQNDKGmLbtI_abxVk_fJXFR5Km2JW1Ov4ovzDqz88/edit?usp=sharing",
+                        "action_id": "button-action"
+                    }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Pls help to report in this thread!",
+                        "emoji": true
+                    }
+                }
+            ],
         });
 
         console.log(result);
