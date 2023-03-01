@@ -1,6 +1,8 @@
 const { App } = require("@slack/bolt");
+const CronJob = require('cron').CronJob;
 const { registerListeners } = require("./listeners");
 const { sendMessageToChannel } = require("./scheduler/e2e_scheduler");
+
 
 
 const { FileInstallationStore } = require('@slack/oauth');
@@ -33,5 +35,14 @@ registerListeners(app);
 
 
 (async () => {
-    sendMessageToChannel(app.client);
+    const job = new CronJob(
+        '25 16 * * *',
+        async function()  {
+            await sendMessageToChannel(app.client);
+        },
+        null,
+        true,
+        'Asia/Ho_Chi_Minh'
+    );
+    job.start()
 })();

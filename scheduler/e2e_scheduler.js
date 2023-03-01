@@ -6,7 +6,7 @@ async function sendMessageToChannel(client) {
         // Call the chat.postMessage method using the WebClient
         const result = await client.chat.postMessage({
             channel: channelID,
-            text: `Hello <@chinhin.le>, this is the test message`,
+            text: `Hello <@chinhin.le>, this is the test schedule message`,
             token: process.env.SLACK_BOT_TOKEN,
         });
 
