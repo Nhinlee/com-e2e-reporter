@@ -17,9 +17,6 @@ async function getDataFromSheetAndSendMessage(client) {
     let length = data.table.rows.length;
 
     const now = new Date(Date.now())
-    console.log(now.getFullYear());
-    console.log(now.getMonth());
-    console.log(now.getDate());
 
     for (let i = 0; i < length; i++) {
         let rowData = data.table.rows[i].c
@@ -34,7 +31,7 @@ async function getDataFromSheetAndSendMessage(client) {
             && now.getDate() == checkTime.getDate()) {
 
             console.log(email);
-            await sendMessageToChannel(client, email)
+            return await sendMessageToChannel(client, email)
         }
     }
 }

@@ -1,10 +1,7 @@
 const { App } = require("@slack/bolt");
 const CronJob = require('cron').CronJob;
 const { registerListeners } = require("./listeners");
-const { sendMessageToChannel, getDataFromSheetAndSendMessage } = require("./scheduler/e2e_scheduler");
-
-
-
+const { getDataFromSheetAndSendMessage } = require("./scheduler/e2e_scheduler");
 const { FileInstallationStore } = require('@slack/oauth');
 
 // Initializes your app with your bot token and signing secret
@@ -29,18 +26,16 @@ registerListeners(app);
 (async () => {
     // Start your app
     await app.start();
-
     console.log('⚡️ Bolt app is running!');
 })();
 
 
 (async () => {
-    await getDataFromSheetAndSendMessage(app.client);
 
     const job = new CronJob(
-        '00 9 * * *',
-        async function()  {
-            await sendMessageToChannel(app.client);
+        '30 21 * * *',
+        async function () {
+            await getDataFromSheetAndSendMessage(app.client);
         },
         null,
         true,
