@@ -1,12 +1,8 @@
 
-// camp-communication channel ID
-const channelID = 'C01RN7GTSRY'
-
-let SHEET_ID = '17NNQNDKGmLbtI_abxVk_fJXFR5Km2JW1Ov4ovzDqz88'
 let SHEET_TITLE = 'E2E Communication check list';
 let SHEET_RANGE = 'A1:C5'
 
-let FULL_URL = ('https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?sheet=' + SHEET_TITLE + '&range=' + SHEET_RANGE);
+let FULL_URL = ('https://docs.google.com/spreadsheets/d/' + process.env.SHEET_ID + '/gviz/tq?sheet=' + SHEET_TITLE + '&range=' + SHEET_RANGE);
 
 async function getDataFromSheetAndSendMessage(client) {
     // Get data from the google sheet
@@ -43,7 +39,7 @@ async function sendMessageToChannel(client, email) {
         let tag = email.split("@")[0]
         // Call the chat.postMessage method using the WebClient
         const result = await client.chat.postMessage({
-            channel: channelID,
+            channel: process.env.CHANNEL_ID,
             token: process.env.SLACK_BOT_TOKEN,
             blocks: [
                 {
@@ -79,7 +75,7 @@ async function sendMessageToChannel(client, email) {
                             "emoji": true
                         },
                         "value": "click_me_123",
-                        "url": "https://mana-e2e.web.app/?squads=%40communication",
+                        "url": `${process.env.COM_E2E_REPORT_LINK}`,
                         "action_id": "button-action"
                     }
                 },
@@ -97,7 +93,7 @@ async function sendMessageToChannel(client, email) {
                             "emoji": true
                         },
                         "value": "click_me_123",
-                        "url": "https://docs.google.com/spreadsheets/d/17NNQNDKGmLbtI_abxVk_fJXFR5Km2JW1Ov4ovzDqz88/edit?usp=sharing",
+                        "url": `${process.env.SHEET_LINK}`,
                         "action_id": "button-action"
                     }
                 },
