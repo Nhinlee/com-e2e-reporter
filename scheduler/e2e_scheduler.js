@@ -1,5 +1,6 @@
 
-const channelID = 'C04R68VEBKR'
+// camp-communication channel ID
+const channelID = 'C01RN7GTSRY'
 
 let SHEET_ID = '17NNQNDKGmLbtI_abxVk_fJXFR5Km2JW1Ov4ovzDqz88'
 let SHEET_TITLE = 'E2E Communication check list';

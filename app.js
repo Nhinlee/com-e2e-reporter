@@ -33,7 +33,7 @@ registerListeners(app);
 (async () => {
 
     const job = new CronJob(
-        '30 21 * * *',
+        '00 9 * * *',
         async function () {
             await getDataFromSheetAndSendMessage(app.client);
         },
