@@ -1,6 +1,6 @@
 
 let SHEET_TITLE = 'E2E Communication check list';
-let SHEET_RANGE = 'A1:C5'
+let SHEET_RANGE = 'A1:C100'
 
 let FULL_URL = ('https://docs.google.com/spreadsheets/d/' + process.env.SHEET_ID + '/gviz/tq?sheet=' + SHEET_TITLE + '&range=' + SHEET_RANGE);
 
