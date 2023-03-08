@@ -2,7 +2,7 @@
   "name": "com-e2e-reporter",
   "version": "1.0.0",
   "description": "Communication E2E reporter",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
@@ -20,6 +20,7 @@
   "dependencies": {
     "@slack/bolt": "^3.12.2",
     "cron": "^2.2.0",
+    "dotenv": "^16.0.3",
     "excel-date-to-js": "^1.1.5"
   }
 }

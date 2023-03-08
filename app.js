@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { App } = require("@slack/bolt");
 const CronJob = require('cron').CronJob;
 const { registerListeners } = require("./listeners");
@@ -31,9 +32,8 @@ registerListeners(app);
 
 
 (async () => {
-
     const job = new CronJob(
-        '50 15 * * *',
+        '00 9 * * *',
         async function () {
             await getDataFromSheetAndSendMessage(app.client);
         },
@@ -41,5 +41,6 @@ registerListeners(app);
         true,
         'Asia/Ho_Chi_Minh'
     );
+    await getDataFromSheetAndSendMessage(app.client);
     job.start()
 })();

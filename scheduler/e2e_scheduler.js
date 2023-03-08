@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 let SHEET_TITLE = 'E2E Communication check list';
 let SHEET_RANGE = 'A1:C100'
