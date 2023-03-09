@@ -1,4 +1,5 @@
 require('dotenv').config()
+const fetch = require("node-fetch");
 
 let SHEET_TITLE = 'E2E Communication check list';
 let SHEET_RANGE = 'A1:C100'

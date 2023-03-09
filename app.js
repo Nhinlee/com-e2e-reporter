@@ -41,6 +41,5 @@ registerListeners(app);
         true,
         'Asia/Ho_Chi_Minh'
     );
-    await getDataFromSheetAndSendMessage(app.client);
     job.start()
 })();
